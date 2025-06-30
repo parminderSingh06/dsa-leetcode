@@ -66,6 +66,7 @@ public class Array{
             arr[i] = arr[i-1];
         }
         arr[index] = item;
+        count++;
         return;
     }
 
@@ -109,6 +110,11 @@ public class Array{
         delete(findItem(item));
     }
 
-
+    public void print(){
+        System.out.println("\nArray size is: " + size());
+        for(int i=0;i<count;i++){
+            System.out.print(" " + arr[i] + " ");
+        }
+    }
 
 }
