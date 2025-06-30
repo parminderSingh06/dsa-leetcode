@@ -5,7 +5,7 @@ public class Array{
     private int[] arr = new int[cap];
     
     private void adjustCapacity(){
-        if(count >= cap/4){
+        if(count <= cap/4 && cap > 4){
             cap /= 2;
             int[] tempArr = new int[cap];
             for(int i=0;i<count;i++){
@@ -39,6 +39,9 @@ public class Array{
     }
 
     public int at(int index){
+        if(index >= count || index < 0){
+            System.out.println("Invalid index.");
+        }
         return arr[index];
     }
 
@@ -71,7 +74,7 @@ public class Array{
     }
 
     public void pop(){
-        arr[count--] = 0;
+        arr[--count] = 0;
         adjustCapacity();
     }
 
@@ -88,6 +91,9 @@ public class Array{
         for(int i=index;i<count;i++){
             arr[i] = arr[i+1];
         }
+
+        count--;
+        arr[count] = 0;
         adjustCapacity();
         return;
     }
@@ -103,6 +109,6 @@ public class Array{
         delete(findItem(item));
     }
 
-    
+
 
 }
