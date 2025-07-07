@@ -2,7 +2,7 @@ package arrays.lc;
 
 import java.util.HashMap;
 
-public class TwoSum {
+class TwoSum {
 
     public int[] bruteForce(int[] nums, int target){
         int[] ans = new int[2];
