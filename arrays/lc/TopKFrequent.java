@@ -32,7 +32,7 @@ public class TopKFrequent {
         for(int i=0;i<k;i++){
             answer[i] = entries.get(i).getKey();
         }
-
+        return answer;
     }
     
 }
