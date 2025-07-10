@@ -1,4 +1,4 @@
-public class isPalindrome {
+public class IsPalindrome {
     public boolean isPalindrome(String s) {
 
         //Processes string to convert into lowercase first and then use the replaceAll method to remove any none alphanumeric characters.

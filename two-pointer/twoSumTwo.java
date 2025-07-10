@@ -1,4 +1,4 @@
-public class twoSumTwo {
+public class TwoSumTwo {
     public int[] twoSum(int[] numbers, int target) {
 
         //Created the answer array bwecasue solution stores two indices and the pointers to traverse the array had the seond pointer-1 to prevent out of bounds error.
