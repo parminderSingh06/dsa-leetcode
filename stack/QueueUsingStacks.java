@@ -8,30 +8,28 @@ public class QueueUsingStacks {
     Stack<Integer> secondStack = new Stack<>();
     
     public void push(int x) {
-        if(firstStack.empty()){
-            firstStack.add(x);
-            return;
-        }
-
-        while(!firstStack.empty()){
-            secondStack.add(firstStack.pop());
-        }
-        secondStack.add(x);
-
-        while(!secondStack.empty()){
-            firstStack.add(secondStack.pop());
-        }
+        firstStack.add(x);
     }
     
     public int pop() {
-        return firstStack.pop();
+        if(secondStack.empty()){
+            while(!firstStack.empty()){
+                secondStack.add(firstStack.pop());
+            }
+        }
+        return secondStack.pop();
     }
     
     public int peek() {
-        return firstStack.peek();
+        if(secondStack.empty()){
+            while(!firstStack.empty()){
+                secondStack.add(firstStack.pop());
+            }
+        }
+        return secondStack.peek();
     }
     
     public boolean empty() {
-        return firstStack.empty();
+        return firstStack.empty() && secondStack.empty();
     }
 }
