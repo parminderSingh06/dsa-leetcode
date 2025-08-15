@@ -11,7 +11,7 @@ class ListNode{
 public class ReverseLinkedList {
 
     public ListNode reverseList(ListNode head) {
-        // if(head == null) return head;
+        if(head == null) return head;
         // ListNode current = head;
         // Stack<Integer> stack = new Stack<>();
         // while(current != null){
@@ -28,7 +28,6 @@ public class ReverseLinkedList {
         
         // return newHead;
 
-        if(head == null) return head;
         ListNode prev = null;
         ListNode curr = head;
 
