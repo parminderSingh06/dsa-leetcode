@@ -26,15 +26,26 @@ public class ReverseLinkedList {
         
         // return newHead;
 
-        ListNode prev = null;
-        ListNode curr = head;
+        // ListNode prev = null;
+        // ListNode curr = head;
 
-        while(curr != null){
-            ListNode next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        return prev;
+        // while(curr != null){
+        //     ListNode next = curr.next;
+        //     curr.next = prev;
+        //     prev = curr;
+        //     curr = next;
+        // }
+        // return prev;
+        return rec(head, null);
+        
+    }
+
+    public ListNode rec(ListNode curr, ListNode prev){
+        if(curr == null){
+            return prev;
+        } 
+        ListNode temp = curr.next;
+        curr.next = prev;
+        return rec(temp, curr);
     }  
 }
