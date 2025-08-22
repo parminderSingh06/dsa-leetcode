@@ -18,11 +18,11 @@ public class PreorderTraversal {
     }
 
    public List<Integer> preorderTraversal(TreeNode root) {
-        // Stack<TreeNode> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
         List<Integer> answer = new ArrayList<>();
 
-        // if(root == null) return answer;
-        // stack.push(root);
+        if(root == null) return answer;
+        stack.push(root);
         
         // while(!stack.isEmpty()){
         //     TreeNode current = stack.pop();

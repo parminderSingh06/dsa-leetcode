@@ -40,4 +40,12 @@ public class InorderTraversal {
         }
         return answer;            
     }
+
+    public void recursion(List<Integer> list, TreeNode root){
+        if(root == null) return;
+
+        recursion(list, root.left);
+        list.add(root.val);
+        recursion(list, root.right);
+    }
 }
