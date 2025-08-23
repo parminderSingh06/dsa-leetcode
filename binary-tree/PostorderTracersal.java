@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class PostorderTracersal {
 
@@ -18,9 +19,24 @@ public class PostorderTracersal {
 
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> answer = new ArrayList<>();
+        Stack<TreeNode> stackOne = new Stack<>();
+        Stack<TreeNode> stackTwo = new Stack<>();
+        stackOne.add(root);
 
-        recursion(answer, root);
+        while(!stackOne.isEmpty()){
+            TreeNode current = stackOne.pop();
+            stackTwo.push(current);
+            if(current.left != null) stackOne.push(current.left);
+            if(current.right != null) stackOne.push(current.right);
+        }
 
+        while(!stackTwo.isEmpty()){
+            answer.add(stackTwo.pop().val);
+        }
+
+
+
+        //recursion(answer, root);
         return answer;
     }
 
