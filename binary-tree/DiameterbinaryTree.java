@@ -1,4 +1,4 @@
-public class MaxDepthBinaryTree {
+public class DiameterbinaryTree {
     public class TreeNode {
         int val;
         TreeNode left;
@@ -12,16 +12,21 @@ public class MaxDepthBinaryTree {
         }
     }
     
-    public int maxDepth(TreeNode root) {
-        return rec(root);
+    int diameter = 0;
+    
+    public int diameterOfBinaryTree(TreeNode root) {
+        rec(root);
+        return diameter;
     }
 
     public int rec(TreeNode root){
         if(root == null) return 0;
 
-        int leftSide = rec(root.left) +1;
-        int rightSide = rec(root.right) +1;
+        int left = rec(root.left);
+        int right = rec(root.right);
 
-        return Math.max(leftSide, rightSide);
-    }   
+        diameter = Math.max(diameter, left+right);
+
+        return 1 + Math.max(left,right);
+    }
 }
