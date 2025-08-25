@@ -14,21 +14,10 @@ public class SameTree {
             this.right = right;
         }
     }
-    
-    boolean answer = true;
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        rec(p,q);
-        return answer;
-    }
 
-    public void rec(TreeNode p, TreeNode q){
-        if(p == null && q == null) return;
-        if((p == null && q != null) || (p != null && q == null)){
-            answer = false;
-            return;
-        }
-        rec(p.left,q.left);
-        rec(p.right,q.right);
-        if(p.val != q.val) answer = false;
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if(p == null && q == null) return true;
+        if(p.val != q.val) return false;
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
 }
