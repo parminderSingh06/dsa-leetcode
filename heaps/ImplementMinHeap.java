@@ -11,6 +11,15 @@ public class ImplementMinHeap {
         heapifyUp(heap.size()-1);
     }
 
+    public int remove(){
+        
+    }
+
+    public int peak(){
+        if(!heap.isEmpty()) return heap.get(0);
+        throw new Error("Heap is empty.");
+    }
+
     public void heapifyUp(int i){
         if(i == 0) return;
         int parentIndex = (i-1)/2;
@@ -24,6 +33,6 @@ public class ImplementMinHeap {
     }
 
     public void heapifyDown(int i){
-        
+
     }
 }
