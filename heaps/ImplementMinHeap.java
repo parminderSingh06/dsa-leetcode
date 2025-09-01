@@ -36,8 +36,7 @@ public class ImplementMinHeap {
         }
     }
 
-    public void heapifyDown(int i){
-        if(heap.size() == 0 || heap.size() == 1) return;        
+    public void heapifyDown(int i){      
         int size = heap.size();
         while(2*i+1 < size){
             int smaller = 2*i+1;
