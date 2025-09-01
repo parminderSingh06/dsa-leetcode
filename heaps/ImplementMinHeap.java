@@ -15,7 +15,7 @@ public class ImplementMinHeap {
         int tempVar = peek();
         heap.set(0, heap.get(heap.size()-1));
         heap.remove(heap.size()-1);
-        heapifyDown();
+        heapifyDown(0);
         return tempVar;
     }
 
@@ -36,9 +36,8 @@ public class ImplementMinHeap {
         }
     }
 
-    public void heapifyDown(){
-        if(heap.size() == 0 || heap.size() == 1) return;
-        int i=0;
+    public void heapifyDown(int i){
+        if(heap.size() == 0 || heap.size() == 1) return;        
         int size = heap.size();
         while(2*i+1 < size){
             int smaller = 2*i+1;
