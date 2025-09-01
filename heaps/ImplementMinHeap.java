@@ -49,4 +49,20 @@ public class ImplementMinHeap {
             i = smaller;
         }
     }
+
+    public ArrayList<Integer> buildHeap(ArrayList<Integer> array){
+        heap = array;
+        int size = array.size();
+
+        if(size <= 1) return array;
+
+        int lastParent = (size-2) / 2;
+
+        for(int i=lastParent;i>=0;i--){
+            heapifyDown(i);
+        }
+
+        return array;
+
+    }
 }
