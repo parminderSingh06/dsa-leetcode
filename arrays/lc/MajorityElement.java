@@ -1,10 +1,23 @@
 package arrays.lc;
 
-import java.util.Arrays;
-
 public class MajorityElement {
     public int majorityElement(int[] nums) {
-        Arrays.sort(nums);
-        return nums[nums.length/2];
+        int mostCommon = nums[0];
+        int count = 1;
+
+        for(int i=1;i<nums.length;i++){
+            if(nums[i] == mostCommon){
+                count++;
+            } 
+            else{
+                if(count == 0){
+                    mostCommon = nums[i];
+                }
+                else{
+                    count--;
+                }
+            }
+        }
+        return mostCommon;
     }   
 }
