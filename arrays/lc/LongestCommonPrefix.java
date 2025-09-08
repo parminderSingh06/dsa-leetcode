@@ -2,24 +2,29 @@ package arrays.lc;
 
 public class LongestCommonPrefix {
     public String longestCommonPrefix(String[] strs) {
-        String answer = strs[0];
-
-        for(int i=1; i<strs.length;i++){
-            for(int j=0; j<answer.length();j++){
-                if(j >= strs[i].length()){
-                    answer = answer.substring(0, j);
-                    break;  
-                };
-                if(answer.charAt(j) == strs[i].charAt(j)){
-                    continue;
-                }
-                else{
-                    answer = answer.substring(0, j);
-                    break;
-                }
+        
+        int smallestIndex = 0;
+        int smallStr = strs[0].length();
+        for(int i=0;i<strs.length;i++){
+            if(strs[i].equals("")) return "";
+            if(strs[i].length() < smallStr){ 
+                smallStr = strs[i].length(); 
+                smallestIndex = i;
             }
         }
 
-        return answer;
-    }     
+        String prefix = strs[smallestIndex];
+        smallestIndex = prefix.length();
+        int i=0;
+        while(true){
+            if(i >= strs.length) break;
+            String temp = strs[i].substring(0, smallestIndex);
+            if(prefix.equals(temp)) i++;
+            else{ 
+                if(smallestIndex <= 0) break;
+                prefix = prefix.substring(0, --smallestIndex);
+            }
+        }
+        return prefix;
+    }
 }
