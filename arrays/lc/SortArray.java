@@ -19,7 +19,7 @@ public class SortArray {
         return nums;
     }
 
-    public int[] sortArray(int[] nums){
+    public int[] MergeSortArray(int[] nums){
         if(nums.length==1) return nums;
         
         int mid = nums.length/2;
@@ -27,7 +27,7 @@ public class SortArray {
         int[] left = Arrays.copyOfRange(nums, 0, mid);
         int[] right = Arrays.copyOfRange(nums, mid, nums.length);
 
-        return merge(sortArray(left), sortArray(right));
+        return merge(MergeSortArray(left), MergeSortArray(right));
     }
 
     public int[] merge(int[] left, int[] right){
@@ -62,5 +62,44 @@ public class SortArray {
         }
 
         return result;
+    }
+
+    public int[] sortArray(int[] nums){
+        int low = 0;
+        int high = nums.length-1;
+
+        quickSort(nums, low, high);
+
+        return nums;
+    }
+
+    public int partiton(int[] nums, int low, int high){
+        int pivot = nums[low];
+        int i = low;
+        int j = high;
+
+        while(true){
+            while(nums[i] < pivot){
+                i++;
+            }
+            while(nums[j] > pivot){
+                j--;
+            }
+            if(i >= j) return j;
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+            i++;
+            j--;
+        }
+    }
+
+    public void quickSort(int[]nums, int low, int high){
+
+        if(low < high){
+            int p = partiton(nums, low, high);
+            quickSort(nums, low, p);
+            quickSort(nums, p+1, high);
+        }
     }
 }
