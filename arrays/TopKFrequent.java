@@ -1,4 +1,4 @@
-package arrays.lc;
+package arrays;
 
 import java.util.ArrayList;
 import java.util.HashMap;
