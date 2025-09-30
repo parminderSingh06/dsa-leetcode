@@ -13,6 +13,4 @@ class Solution:
             else:
                 p = p+1
         
-        return length
-
-        
+        return length        
