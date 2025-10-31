@@ -28,4 +28,10 @@ public class DFS {
             if(current.left != null) stack.push(current.left);
         }
     }
+
+    public void dfsRecursive(TreeNode head){
+        if(head == null) return;
+        dfsRecursive(head.right);
+        dfsRecursive(head.left);
+    }
 }
