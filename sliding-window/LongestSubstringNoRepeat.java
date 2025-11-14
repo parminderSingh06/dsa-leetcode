@@ -1,31 +1,26 @@
 import java.util.HashSet;
-import java.util.Set;
 
 public class LongestSubstringNoRepeat {
 
     public int lengthOfLongestSubstring(String s) {
-        if(s.length() == 0) return 0;
-
-        int longestSubStringLength = 0;
-
-        char[] givenString = s.toCharArray();
-
-        Set<Character> set = new HashSet<>();
-
+        HashSet<Character> set = new HashSet<>();
+        int longest= 0;
         int left = 0, right = 0;
 
-        while(right < givenString.length){
-            if(set.add(givenString[right])){
-                if(longestSubStringLength < set.size()) longestSubStringLength = set.size();
-                right++;
-            }
-            else{
-                set.remove(givenString[left]);
+        while(right < s.length()){
+
+            while(set.contains(s.charAt(right))){
+                set.remove(s.charAt(left));
                 left++;
             }
+
+            set.add(s.charAt(right));
+            longest = Math.max(longest, set.size());
+            right++;
+
         }
 
-        return longestSubStringLength;
+        return longest;
     }
     
 }
