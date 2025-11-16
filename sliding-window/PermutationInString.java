@@ -1,33 +1,34 @@
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.Arrays;
 
 public class PermutationInString {
     public boolean checkInclusion(String s1, String s2) {
-        Map<Character, Integer> map = new HashMap<>();
-        Map<Character, Integer> temp = new HashMap<>();
-        int left = 0, right = 0;
+        int[] arr = new int[26];
+        int[] temp = new int[26];
 
+        if(s1.length() > s2.length()) return false;
+        
         for(int i=0;i<s1.length();i++){
-            map.put(s1.charAt(i), map.getOrDefault(s1.charAt(i), 0)+1);
+            arr[s1.charAt(i) - 'a']++;
         }
+        for(int i=0;i<s1.length();i++){
+            temp[s2.charAt(i) - 'a']++;
+        }
+        if(Arrays.equals(arr, temp)) return true;
+
+        int left = 0, right = s1.length();
 
         while(right < s2.length()){
-            char currentChar = s2.charAt(right);
-            temp.put(currentChar, temp.getOrDefault(currentChar, 0)+1);
+            char lftChr = s2.charAt(left);
+            char rgtChr = s2.charAt(right);
 
-            if(right-left + 1 > s1.length()){
-                char leftChar = s2.charAt(left);
-                temp.put(leftChar, temp.getOrDefault(leftChar, 0)-1);
-                if(temp.get(leftChar) == 0) temp.remove(leftChar);
-                left++;
-            }
+            temp[rgtChr - 'a']++;
+            temp[lftChr - 'a']--;
 
-            if(map.equals(temp))return true;
-
+            if(Arrays.equals(arr, temp)) return true;
+            
             right++;
+            left++;
         }
-
         return false;
     }
 }
